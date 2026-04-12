@@ -1,0 +1,20 @@
+Message stats for scenario HybridSwarm_Urban_110
+sim_time: 24000.1000
+created: 1082
+started: 49713
+relayed: 33377
+aborted: 16332
+dropped: 32355
+removed: 0
+delivered: 845
+delivery_prob: 0.7810
+response_prob: 0.0000
+overhead_ratio: 38.4994
+latency_avg: 716.6721
+latency_med: 667.6000
+hopcount_avg: 2.2970
+hopcount_med: 2
+buffertime_avg: 777.1854
+buffertime_med: 711.7000
+rtt_avg: NaN
+rtt_med: NaN

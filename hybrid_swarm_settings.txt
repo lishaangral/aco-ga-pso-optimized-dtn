@@ -1,0 +1,64 @@
+# --- Hybrid Swarm Simulation Settings ---
+
+Scenario.name = HybridSwarm_Urban
+Scenario.simulateConnections = true
+# Update interval in seconds
+Scenario.updateInterval = 0.1
+# Simulation time: 24000 seconds [cite: 423]
+Scenario.endTime = 24000
+
+# --- Interfaces ---
+# Transmission range: 40 meters [cite: 423]
+Interface.Bluetooth.type = SimpleBroadcastInterface
+Interface.Bluetooth.transmitRange = 40
+Interface.Bluetooth.transmitSpeed = 250k
+
+# --- Events (Bundle Generation) ---
+Events.nrof = 1
+Events1.class = MessageEventGenerator
+# Creation interval: [15, 30] Seconds [cite: 423]
+Events1.interval = 15, 30
+# Bundle size: [500kB, 1MB] [cite: 423]
+Events1.size = 500k, 1M
+# Map to all groups
+Events1.hosts = 0, 110
+
+# --- Groups & Mobility ---
+# Note: The ONE simulator requires specific WKT maps for "MapRouteMovement".
+# You will need to generate a 6.9x5.1 km urban grid in OpenJump[cite: 423, 425].
+Scenario.nrofHostGroups = 3
+
+# Group 1: Cars (72.63% of nodes) [cite: 436]
+Group1.groupID = C
+Group1.movementModel = ShortestPathMapBasedMovement
+Group1.router = HybridSwarmRouter
+Group1.bufferSize = 15M 
+# Speed: 12.6 to 68.4 km/h (converted to 3.5 to 19 m/s) [cite: 436]
+Group1.speed = 3.5, 19
+Group1.waitTime = 0, 120
+# For a 110 node density test, cars = ~80 nodes
+Group1.nrofHosts = 80
+
+# Group 2: Buses (8.73% of nodes) [cite: 436]
+Group2.groupID = B
+Group2.movementModel = BusMovement
+Group2.router = HybridSwarmRouter
+Group2.bufferSize = 15M 
+Group2.speed = 3.5, 19
+Group2.waitTime = 0, 120
+Group2.nrofHosts = 10
+
+# Group 3: Trams (18.62% of nodes) [cite: 436]
+Group3.groupID = T
+Group3.movementModel = MapRouteMovement
+Group3.router = HybridSwarmRouter
+Group3.bufferSize = 15M 
+Group3.speed = 3.5, 19
+Group3.waitTime = 0, 120
+Group3.nrofHosts = 20
+
+# --- Metrics (Calculated automatically by ONE) ---
+Report.nrofReports = 3
+Report.report1 = MessageStatsReport
+Report.report2 = MessageDeliveryReport
+Report.report3 = ConnectivityReport

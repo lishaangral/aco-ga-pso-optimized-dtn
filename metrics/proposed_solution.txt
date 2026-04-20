@@ -1,0 +1,43 @@
+// TTL 30, 110 nodes 
+Message stats for scenario app2_AdaptiveAcoGaPsoRouter_110
+sim_time: 24000.1000
+created: 1082
+started: 24609
+relayed: 16615
+aborted: 7993
+dropped: 14637
+removed: 1135
+delivered: 964
+delivery_prob: 0.8909
+response_prob: 0.0000
+overhead_ratio: 16.2355
+latency_avg: 653.4343
+latency_med: 578.3000
+hopcount_avg: 2.6473
+hopcount_med: 3
+buffertime_avg: 1250.0986
+buffertime_med: 1356.6000
+rtt_avg: NaN
+rtt_med: NaN
+
+// TTL 60, 110 nodes
+Message stats for scenario AcoGaPsoRouter_110
+sim_time: 24000.1000
+created: 1082
+started: 22706
+relayed: 14941
+aborted: 7765
+dropped: 12144
+removed: 1173
+delivered: 1016
+delivery_prob: 0.9390
+response_prob: 0.0000
+overhead_ratio: 13.7057
+latency_avg: 852.5031
+latency_med: 711.9000
+hopcount_avg: 2.5000
+hopcount_med: 2
+buffertime_avg: 2679.8888
+buffertime_med: 2933.6000
+rtt_avg: NaN
+rtt_med: NaN

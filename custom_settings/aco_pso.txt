@@ -1,0 +1,142 @@
+# settings.txt
+
+#
+# Adaptive ACO + GA + PSO settings for the same 110-node urban scenario.
+# Physical scenario, mobility, traffic, map, TTL, buffer, and reports are
+# kept aligned with the user's base settings.
+#
+
+## Scenario settings
+Scenario.name = AcoPsoRouter_110
+Scenario.simulateConnections = true
+Scenario.updateInterval = 0.1
+Scenario.endTime = 24000
+
+## Interface-specific settings:
+btInterface.type = SimpleBroadcastInterface
+btInterface.transmitSpeed = 250k
+btInterface.transmitRange = 40
+
+## Define 4 different node groups
+Scenario.nrofHostGroups = 4
+
+# Common settings for all groups
+# Group.router = AcoPsoGaRouter
+Group.router = AcoPsoRouter
+Group.alpha1 = 0.30
+Group.alpha2 = 0.38
+Group.alpha3 = 0.32
+Group.omega1 = 0.55
+Group.omega2 = 0.60
+Group.bufferSize = 15M
+Group.waitTime = 0, 120
+Group.nrofInterfaces = 1
+Group.interface1 = btInterface
+Group.msgTtl = 30
+
+## Added router-only parameters for high-delivery operation
+Group.pheromoneEvaporation = 0.03
+Group.pheromoneBoost = 0.24
+Group.pheromoneCap = 3.0
+Group.pheromoneAgeInterval = 20
+
+Group.gaPopulationSize = 8
+Group.gaCrossoverRate = 0.78
+Group.gaMutationRate = 0.12
+Group.exploreBoost = 0.24
+
+Group.psoInertia = 0.65
+Group.psoC1 = 1.55
+Group.psoC2 = 1.55
+Group.velocityClamp = 0.35
+
+Group.initialCopies = 12
+Group.minCopies = 4
+Group.maxCopies = 16
+Group.congestionThreshold = 0.85
+Group.ttlUrgencyThreshold = 0.25
+Group.rescueUrgencyThreshold = 0.65
+Group.strongRelayThreshold = 0.72
+Group.linkSpeedNorm = 250000
+Group.stabilityNormSeconds = 60
+
+# Mobility-class boundaries matching the unchanged host-group layout:
+# 0-79 cars, 80-89 buses, 90-99 tram route 1, 100-109 tram route 2
+Group.classBoundary1 = 80
+Group.classBoundary2 = 90
+Group.classBoundary3 = 100
+
+## Group and movement model specific settings
+
+# group1 (Cars - 72.63% of 110 = 80 nodes)
+Group1.groupID = c
+Group1.movementModel = ShortestPathMapBasedMovement
+Group1.nrofHosts = 80
+Group1.okMaps = 1
+Group1.speed = 3.5, 19.0
+
+# group2 (Buses - 8.73% of 110 = 10 nodes)
+Group2.groupID = b
+Group2.movementModel = MapRouteMovement
+Group2.routeFile = data/demo_bus.wkt
+Group2.routeType = 2
+Group2.nrofHosts = 10
+Group2.waitTime = 10, 30
+Group2.speed = 3.5, 19.0
+
+# group3 (Trams Route 1)
+Group3.groupID = t1
+Group3.movementModel = MapRouteMovement
+Group3.routeFile = data/tram4.wkt
+Group3.routeType = 1
+Group3.nrofHosts = 10
+Group3.waitTime = 10, 30
+Group3.speed = 3.5, 19.0
+
+# group4 (Trams Route 2)
+Group4.groupID = t2
+Group4.movementModel = MapRouteMovement
+Group4.routeFile = data/tram10.wkt
+Group4.routeType = 2
+Group4.nrofHosts = 10
+Group4.waitTime = 10, 30
+Group4.speed = 3.5, 19.0
+
+## Message creation parameters
+Events.nrof = 1
+Events1.class = MessageEventGenerator
+Events1.interval = 15, 30
+Events1.size = 500k, 1M
+Events1.hosts = 0, 109
+Events1.prefix = M
+
+## Movement model settings
+MovementModel.rngSeed = 1
+MovementModel.worldSize = 6900, 5100
+MovementModel.warmup = 400
+
+## Map based movement
+MapBasedMovement.nrofMapFiles = 4
+MapBasedMovement.offset = 2550000, 6671000
+MapBasedMovement.mapFile1 = data/roads.wkt
+MapBasedMovement.mapFile2 = data/main_roads.wkt
+MapBasedMovement.mapFile3 = data/pedestrian_paths.wkt
+MapBasedMovement.mapFile4 = data/shops.wkt
+
+## Reports
+Report.nrofReports = 2
+Report.warmup = 0
+Report.reportDir = reports/
+Report.report1 = MessageStatsReport
+Report.report2 = ContactTimesReport
+
+## Optimization settings
+Optimization.cellSizeMult = 5
+Optimization.randomizeUpdateOrder = true
+
+## GUI settings
+GUI.UnderlayImage.fileName = data/helsinki_underlay.png
+GUI.UnderlayImage.offset = 64, 20
+GUI.UnderlayImage.scale = 4.75
+GUI.UnderlayImage.rotate = -0.015
+GUI.EventLogPanel.nrofEvents = 100

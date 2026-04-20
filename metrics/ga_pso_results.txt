@@ -1,0 +1,43 @@
+Message stats for scenario GaPsoRouter_110
+sim_time: 24000.1000
+created: 1082
+started: 28238
+relayed: 19710
+aborted: 8526
+dropped: 727
+removed: 18621
+delivered: 998
+delivery_prob: 0.9224
+response_prob: 0.0000
+overhead_ratio: 18.7495
+latency_avg: 556.8652
+latency_med: 499.1000
+hopcount_avg: 2.8467
+hopcount_med: 3
+buffertime_avg: 554.4645
+buffertime_med: 492.4000
+rtt_avg: NaN
+rtt_med: NaN
+
+
+60 TTL
+Message stats for scenario GaPsoRouter_110
+sim_time: 24000.1000
+created: 1082
+started: 30163
+relayed: 21355
+aborted: 8807
+dropped: 74
+removed: 20808
+delivered: 1040
+delivery_prob: 0.9612
+response_prob: 0.0000
+overhead_ratio: 19.5337
+latency_avg: 613.1552
+latency_med: 487.6000
+hopcount_avg: 2.8981
+hopcount_med: 3
+buffertime_avg: 570.2792
+buffertime_med: 495.5000
+rtt_avg: NaN
+rtt_med: NaN
